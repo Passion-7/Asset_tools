@@ -1,5 +1,8 @@
+import os.path
+
 from ui.Texture_renamer_ui import Ui_MainWindow
 from PySide2.QtWidgets import QMainWindow, QApplication, QFileDialog, QHeaderView, QTableWidgetItem, QComboBox, QMessageBox
+from PySide2.QtCore import Qt
 from util.Directory import *
 
 
@@ -25,16 +28,20 @@ class Texture_renamer(QMainWindow):
         self.ui.Table.horizontalHeader().setSectionResizeMode(0, QHeaderView.Interactive)
 
     def create_cbx_tex_type(self):
+        ref_type = ("Basecolor",
+                    "Albedo",
+                    "Specular",
+                    "Gloss",
+                    "Roughness",
+                    "Normal",
+                    "Bump",
+                    "Opacity",
+                    "Translucency",
+                    "Displacement",
+                    )
         self.cbx_tex_type = QComboBox()
-        self.cbx_tex_type.addItem("Basecolor")
-        self.cbx_tex_type.addItem("Specular")
-        self.cbx_tex_type.addItem("Gloss")
-        self.cbx_tex_type.addItem("Roughness")
-        self.cbx_tex_type.addItem("Normal")
-        self.cbx_tex_type.addItem("Bump")
-        self.cbx_tex_type.addItem("Opacity")
-        self.cbx_tex_type.addItem("Translucency")
-        self.cbx_tex_type.addItem("Displacement")
+        self.cbx_tex_type.setFocusPolicy(Qt.StrongFocus)
+        self.cbx_tex_type.addItems(ref_type)
         return self.cbx_tex_type
 
     def create_cbx_tex_res(self):
@@ -44,6 +51,7 @@ class Texture_renamer(QMainWindow):
                    "8K",
                    "16K")
         self.cbx_tex_res = QComboBox()
+        self.cbx_tex_type.setFocusPolicy(Qt.StrongFocus)
         self.cbx_tex_res.addItems(ref_res)
         return self.cbx_tex_res
 
@@ -69,20 +77,25 @@ class Texture_renamer(QMainWindow):
             row_num += 1
 
     def go(self):
-        tex = get_directory_files(self.texture_dir)
-        tex_path = tex[0]
-        tex_name = tex[1]
-        index = 0
-        if self.ui.T_name.text() != "":
-            for name in tex_name:
-                tex_type = get_texture_type(name)
-                tex_res = get_tex_res(name)
-                new_tex_name = self.ui.T_name.text() + "_" + tex_type + "_" + tex_res + "." + name.split(".")[-1]
-                print(new_tex_name)
-                rename(tex_path[index], new_tex_name)
-                index += 1
-        else:
-            QMessageBox.warning(None, "Warning", "Asset Name is Empty!")
+        row_num = self.ui.Table.rowCount()
+        if row_num != 0:
+            if self.ui.T_name.text() != "":
+                for row in range(0, row_num):
+                    tex_name = self.ui.Table.item(row, 0).text()
+                    old_tex_path = os.path.join(self.texture_dir, tex_name)
+                    tex_type = self.ui.Table.cellWidget(row, 1).currentText()
+                    tex_res = self.ui.Table.cellWidget(row, 2).currentText()
+                    new_tex_name = self.ui.T_name.text() + "_" + tex_type + "_" + tex_res + "." + tex_name.split(".")[-1]
+                    new_tex_path = os.path.join(self.texture_dir, new_tex_name)
+                    rename(old_tex_path, new_tex_path)
+
+                    item_tex_name = QTableWidgetItem()
+                    item_tex_name.setText(new_tex_name)
+                    self.ui.Table.setItem(row, 0, item_tex_name)
+
+                    self.ui.statusbar.showMessage("Successfully renamed ◔̯◔")
+            else:
+                QMessageBox.warning(None, "Warning", "Asset Name is Empty!")
 
 
 if __name__ == '__main__':

@@ -23,6 +23,8 @@ class Ui_MainWindow(object):
         MainWindow.setFont(font)
         self.actionOpen = QAction(MainWindow)
         self.actionOpen.setObjectName(u"actionOpen")
+        self.actionDesigned_by_Ripple_in_Najing = QAction(MainWindow)
+        self.actionDesigned_by_Ripple_in_Najing.setObjectName(u"actionDesigned_by_Ripple_in_Najing")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
@@ -80,18 +82,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.Directory)
 
-        self.verticalSpacer = QSpacerItem(20, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout.addItem(self.verticalSpacer)
-
-        self.L_file = QLabel(self.centralwidget)
-        self.L_file.setObjectName(u"L_file")
-
-        self.verticalLayout.addWidget(self.L_file)
-
-        self.verticalSpacer_2 = QSpacerItem(20, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
-
-        self.verticalLayout.addItem(self.verticalSpacer_2)
 
         self.Table = QTableWidget(self.centralwidget)
         if (self.Table.columnCount() < 3):
@@ -168,6 +161,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuEdit.menuAction())
         self.menubar.addAction(self.menuAbout.menuAction())
         self.menuFile.addAction(self.actionOpen)
+        self.menuAbout.addAction(self.actionDesigned_by_Ripple_in_Najing)
 
         self.retranslateUi(MainWindow)
 
@@ -175,12 +169,12 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Texture Renamer", None))
         self.actionOpen.setText(QCoreApplication.translate("MainWindow", u"Open", None))
+        self.actionDesigned_by_Ripple_in_Najing.setText(QCoreApplication.translate("MainWindow", u"Designed by Ripple in Najing.", None))
         self.L_asset_name.setText(QCoreApplication.translate("MainWindow", u"Asset Name:", None))
         self.L_directory.setText(QCoreApplication.translate("MainWindow", u"Texture Directory:", None))
         self.B_finder.setText(QCoreApplication.translate("MainWindow", u"Finder", None))
-        self.L_file.setText(QCoreApplication.translate("MainWindow", u"Texture Files:", None))
         ___qtablewidgetitem = self.Table.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Texture File", None));
         ___qtablewidgetitem1 = self.Table.horizontalHeaderItem(1)

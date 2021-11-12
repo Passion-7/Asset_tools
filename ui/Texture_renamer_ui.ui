@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Texture Renamer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -132,30 +132,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>5</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="L_file">
-        <property name="text">
-         <string>Texture Files:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>5</height>
+          <height>10</height>
          </size>
         </property>
        </spacer>
@@ -311,6 +288,7 @@
     <property name="title">
      <string>About</string>
     </property>
+    <addaction name="actionDesigned_by_Ripple_in_Najing"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -320,6 +298,11 @@
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
+   </property>
+  </action>
+  <action name="actionDesigned_by_Ripple_in_Najing">
+   <property name="text">
+    <string>Designed by Ripple in Najing.</string>
    </property>
   </action>
  </widget>
