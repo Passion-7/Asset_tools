@@ -171,7 +171,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Texture Renamer", None))
         self.actionOpen.setText(QCoreApplication.translate("MainWindow", u"Open", None))
-        self.actionDesigned_by_Ripple_in_Najing.setText(QCoreApplication.translate("MainWindow", u"Designed by Ripple in Najing.", None))
+        self.actionDesigned_by_Ripple_in_Najing.setText(QCoreApplication.translate("MainWindow", u"Developed by RiPPLE in Nanjing.", None))
         self.L_asset_name.setText(QCoreApplication.translate("MainWindow", u"Asset Name:", None))
         self.L_directory.setText(QCoreApplication.translate("MainWindow", u"Texture Directory:", None))
         self.B_finder.setText(QCoreApplication.translate("MainWindow", u"Finder", None))

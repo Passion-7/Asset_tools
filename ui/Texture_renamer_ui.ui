@@ -302,7 +302,7 @@
   </action>
   <action name="actionDesigned_by_Ripple_in_Najing">
    <property name="text">
-    <string>Designed by Ripple in Najing.</string>
+    <string>Developed by RiPPLE in Nanjing.</string>
    </property>
   </action>
  </widget>

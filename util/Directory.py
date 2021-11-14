@@ -2,17 +2,9 @@ import os
 import glob
 
 
-def create_dir(dir_name, path):
-    dir_struct = ("Geo",
-                  "Geo/Variant",
-                  "Geo/Variant/Abc",
-                  "Looks",
-                  "Looks/Texture",
-                  "Looks/Texture/Preview",
-                  "Looks/Texture/Render",
-                  )
-    if not os.path.exists(path + "/" + dir_name):
-        for folder in dir_struct:
+def create_dir(dir_name, path, dir_struct):
+    for folder in dir_struct:
+        if not os.path.exists(path + "/" + dir_name + "/" + folder):
             os.makedirs(path + "/" + dir_name + "/" + folder)
 
 
