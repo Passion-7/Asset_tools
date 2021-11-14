@@ -33,31 +33,30 @@ class Asset_dir_creator(QMainWindow):
         self.set_asset_name()
         if self.ui.CB_mdl.isChecked():
             dir_struct = (
-                          "Geo",
-                          "Geo/Variant",
-                          "Geo/Variant/Abc"
-                          )
+                "Geo",
+                "Geo/Variant",
+                "Geo/Variant/Abc"
+            )
             create_dir(self.asset_name, self.asset_path, dir_struct)
         if self.ui.CB_ldv.isChecked():
             dir_struct = (
-                          "Looks",
-                          "Looks/Texture",
-                          "Looks/Texture/Preview",
-                          "Looks/Texture/Render"
-                          )
+                "Looks",
+                "Looks/Texture",
+                "Looks/Texture/Preview",
+                "Looks/Texture/Render"
+            )
             create_dir(self.asset_name, self.asset_path, dir_struct)
         if self.ui.CB_rig.isChecked():
             dir_struct = (
-                          "Rig",
-                          )
+                "Rig",
+            )
             create_dir(self.asset_name, self.asset_path, dir_struct)
         if self.ui.CB_anim.isChecked():
             dir_struct = (
-                          "Anim",
-                          )
+                "Anim",
+            )
             create_dir(self.asset_name, self.asset_path, dir_struct)
         self.ui.statusbar.showMessage("Successfully created asset directory ◔̯◔")
-
 
 
 if __name__ == "__main__":
